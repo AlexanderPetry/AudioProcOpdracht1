@@ -1,0 +1,49 @@
+17:43:40 **** Incremental Build of configuration Debug for project Taak1app ****
+make all 
+make --no-print-directory pre-build
+a9-linaro-pre-build-step
+' '
+make --no-print-directory main-build
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -DDISABLEFLOAT16 -DARM_MATH_NEON -Wall -O0 -g3 -IC:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/sw/AudioProcessing2/standalone_ps7_cortexa9_0/bspinclude/include -I"C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app\src\ComputeLibrary" -I"C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app\src\Include" -I"C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app\src\PrivateInclude" -I"C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app\src\Include\dsp" -I"C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app\src\Source" -I"C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app\src\ComputeLibrary\Include" -I"C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app\src\Ne10" -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=neon-vfpv3 -mfloat-abi=hard -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+In file included from ../src/helloworld.c:11:
+C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/sw/AudioProcessing2/standalone_ps7_cortexa9_0/bspinclude/include/xuartps.h:450: warning: "XUartPs_IsTransmitEmpty" redefined
+  450 | #define XUartPs_IsTransmitEmpty(InstancePtr)                            \
+      | 
+In file included from C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/sw/AudioProcessing2/standalone_ps7_cortexa9_0/bspinclude/include/xuartps.h:170:
+C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/sw/AudioProcessing2/standalone_ps7_cortexa9_0/bspinclude/include/xuartps_hw.h:424: note: this is the location of the previous definition
+  424 | #define XUartPs_IsTransmitEmpty(BaseAddress)                     \
+      | 
+../src/helloworld.c: In function 'Timer_Intr_Setup':
+../src/helloworld.c:64:13: warning: variable 'Status' set but not used [-Wunused-but-set-variable]
+   64 |         int Status;
+      |             ^~~~~~
+../src/helloworld.c: In function 'sendingLoop':
+../src/helloworld.c:155:32: warning: pointer targets in passing argument 2 of 'XUartPs_Recv' differ in signedness [-Wpointer-sign]
+  155 |     if (XUartPs_Recv(&Uart_Ps, &c, 1) == 1) {
+      |                                ^~
+      |                                |
+      |                                char *
+C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/sw/AudioProcessing2/standalone_ps7_cortexa9_0/bspinclude/include/xuartps.h:471:43: note: expected 'u8 *' {aka 'unsigned char *'} but argument is of type 'char *'
+  471 | u32 XUartPs_Recv(XUartPs *InstancePtr,u8 *BufferPtr,
+      |                                       ~~~~^~~~~~~~~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:170:15: warning: variable 'Status' set but not used [-Wunused-but-set-variable]
+  170 |           int Status;
+      |               ^~~~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: Taak1app.elf'
+'Invoking: ARM v7 gcc linker'
+'Finished building target: Taak1app.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size Taak1app.elf  |tee "Taak1app.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+2559177	  11604	30095696	32666477	1f2736d	Taak1app.elf
+'Finished building: Taak1app.elf.size'
+' '
+
+17:44:12 Build Finished (took 32s.327ms)
+

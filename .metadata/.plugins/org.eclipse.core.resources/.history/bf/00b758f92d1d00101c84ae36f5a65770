@@ -1,0 +1,199 @@
+#include <stdio.h>
+#include "platform.h"
+#include "xil_printf.h"
+#include "arm_math.h"
+#include "arm_const_structs.h"
+#include "audio.h"
+#include "xscutimer.h"
+#include "xscugic.h"
+#include "math.h"
+#include "xuartps.h"
+#include "xgpio.h"
+
+XGpio GpioLed;
+XGpio GpioSwitches;
+
+int switchValue;
+bool isReceiveMode;
+
+#define UINT32_MAX_AS_FLOAT 4294967295.0f //(2^32 - 1
+#define UINT_SCALED_MAX_VALUE 0xFFFFF // 2^24 =>24 bits audio codec maximum value is 0xFF FFFF
+
+#define TIMER_DEVICE_ID		XPAR_XSCUTIMER_0_DEVICE_ID
+#define INTC_DEVICE_ID		XPAR_SCUGIC_SINGLE_DEVICE_ID
+#define TIMER_IRPT_INTR		XPAR_SCUTIMER_INTR
+
+#define SAMPLE_RATE 		48000 // Sampling rate of audio input, is also used for generating an interrupt at this frequency. 48kHz.
+
+#define LED_CHANNEL 1
+#define LED_DELAY   1000000
+
+#define FFT_SIZE 1024
+#define SAMPLE_BLOCK_SIZE (FFT_SIZE * 2)
+#define SAMPLE_RATE 48000
+
+float32_t sampleBuffer[SAMPLE_BLOCK_SIZE];
+
+volatile unsigned long u32DataL, u32DataR;
+
+volatile float32_t tone_freq1 = 0.0f, tone_freq2 = 0.0f;
+volatile float32_t theta1 = 0.0f, theta2 = 0.0f;
+volatile int tone_active = 0;
+
+XUartPs Uart_Ps;
+
+
+// Timer_ISR for sine generation (no LUT, our processor seems to be fast enough ;-) )
+static void Timer_ISR(void * CallBackRef)
+{
+	if (!tone_active) return;
+
+	float32_t inc1 = 2 * PI * tone_freq1 / SAMPLE_RATE;
+	float32_t inc2 = 2 * PI * tone_freq2 / SAMPLE_RATE;
+	theta1 += inc1; if (theta1 > 2*PI) theta1 -= 2*PI;
+	theta2 += inc2; if (theta2 > 2*PI) theta2 -= 2*PI;
+
+	float32_t val = (arm_sin_f32(theta1) + arm_sin_f32(theta2)) * 0.5f;
+	uint32_t scaled = (uint32_t)(((val + 1.0f) * 0.5f) * UINT_SCALED_MAX_VALUE);
+	Xil_Out32(I2S_DATA_TX_R_REG, scaled);
+}
+
+static int Timer_Intr_Setup(XScuGic * IntcInstancePtr, XScuTimer *TimerInstancePtr, u16 TimerIntrId)
+{
+	int Status;
+	XScuGic_Config *IntcConfig;
+	IntcConfig = XScuGic_LookupConfig(INTC_DEVICE_ID);
+	Status = XScuGic_CfgInitialize(IntcInstancePtr, IntcConfig, IntcConfig->CpuBaseAddress);
+	Xil_ExceptionInit();
+	Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_IRQ_INT, (Xil_ExceptionHandler)XScuGic_InterruptHandler,IntcInstancePtr);
+	Status = XScuGic_Connect(IntcInstancePtr, TimerIntrId, (Xil_ExceptionHandler)Timer_ISR, (void *)TimerInstancePtr);
+	XScuGic_Enable(IntcInstancePtr, TimerIntrId);
+	XScuTimer_EnableInterrupt(TimerInstancePtr);
+	Xil_ExceptionEnable();
+	return XST_SUCCESS;
+}
+
+typedef struct {
+    float32_t freq1;
+    float32_t freq2;
+} DTMFPair;
+
+DTMFPair GetDTMFFrequencies(char key) {
+    switch (key) {
+        case '1': return (DTMFPair){697, 1209};
+        case '2': return (DTMFPair){697, 1336};
+        case '3': return (DTMFPair){697, 1477};
+        case 'A': return (DTMFPair){697, 1633};
+        case '4': return (DTMFPair){770, 1209};
+        case '5': return (DTMFPair){770, 1336};
+        case '6': return (DTMFPair){770, 1477};
+        case 'B': return (DTMFPair){770, 1633};
+        case '7': return (DTMFPair){852, 1209};
+        case '8': return (DTMFPair){852, 1336};
+        case '9': return (DTMFPair){852, 1477};
+        case 'C': return (DTMFPair){852, 1633};
+        case '*': return (DTMFPair){941, 1209};
+        case '0': return (DTMFPair){941, 1336};
+        case '#': return (DTMFPair){941, 1477};
+        case 'D': return (DTMFPair){941, 1633};
+        default:  return (DTMFPair){0, 0};
+    }
+}
+
+void DetectDTMFFrequency()
+{
+    // Fill `sampleBuffer` with real samples, imag parts = 0
+    for (int i = 0; i < FFT_SIZE; i++) {
+        float32_t sample = (float32_t)(Xil_In32(I2S_DATA_RX_L_REG)); // read from I2S
+        sampleBuffer[2*i] = sample;
+        sampleBuffer[2*i+1] = 0.0f; // imaginary part
+    }
+
+    arm_cfft_instance_f32 fft_inst;
+    arm_cfft_init_f32(&fft_inst, FFT_SIZE);
+    arm_cfft_f32(&fft_inst, sampleBuffer, 0, 1);
+
+    float32_t mag[FFT_SIZE];
+    arm_cmplx_mag_f32(sampleBuffer, mag, FFT_SIZE);
+
+    uint32_t index;
+    float32_t max_val;
+    arm_max_f32(mag, FFT_SIZE, &max_val, &index);
+
+    float32_t freq = ((float32_t)index * SAMPLE_RATE) / FFT_SIZE;
+    xil_printf("Detected Peak Frequency: %.1f Hz\r\n", freq);
+}
+
+void PlayDTMF(float32_t f1, float32_t f2, float duration_sec)
+{
+    tone_freq1 = f1;
+    tone_freq2 = f2;
+    theta1 = theta2 = 0.0f;
+    tone_active = 1;
+    usleep((int)(duration_sec * 1000000));
+    tone_active = 0;
+}
+
+//PlayDTMF(697, 1209, 0.5f);
+
+int main()
+{
+	  int Status;
+	  init_platform();
+
+	  XUartPs_Config *Config = XUartPs_LookupConfig(XPAR_XUARTPS_0_DEVICE_ID);
+	  XUartPs_CfgInitialize(&Uart_Ps, Config, Config->BaseAddress);
+	  XUartPs_SetBaudRate(&Uart_Ps, 115200);
+	  xil_printf("Ready for input\r\n");
+
+	  XGpio_Initialize(&GpioLed, XPAR_AXI_GPIO_2_DEVICE_ID);
+	  XGpio_SetDataDirection(&GpioLed, 1, 0x0);
+
+	  XGpio_Initialize(&GpioSwitches, XPAR_AXI_GPIO_2_DEVICE_ID);
+	  XGpio_SetDataDirection(&GpioSwitches, 2, 0xF);
+	  switchValue = XGpio_DiscreteRead(&GpioSwitches, 2);
+	  isReceiveMode = (switchValue & 0x1) != 0;
+
+	  xil_printf("Mode: %s\r\n", isReceiveMode ? "Receive" : "Send");
+
+	  IicConfig(XPAR_XIICPS_0_DEVICE_ID);
+	  AudioPllConfig();
+	  AudioConfigureJacks();
+	  LineinLineoutConfig();
+
+	  XScuTimer Scu_Timer;
+	  XScuTimer_Config *Scu_ConfigPtr;
+	  XScuGic IntcInstance;
+
+	  Scu_ConfigPtr = XScuTimer_LookupConfig(XPAR_PS7_SCUTIMER_0_DEVICE_ID);
+	  Status = XScuTimer_CfgInitialize(&Scu_Timer, Scu_ConfigPtr, Scu_ConfigPtr->BaseAddr);
+	  Status = Timer_Intr_Setup(&IntcInstance, &Scu_Timer, XPS_SCU_TMR_INT_ID);
+	  XScuTimer_LoadTimer(&Scu_Timer,(XPAR_PS7_CORTEXA9_0_CPU_CLK_FREQ_HZ / 2)/(SAMPLE_RATE));
+	  XScuTimer_EnableAutoReload(&Scu_Timer);
+	  XScuTimer_Start(&Scu_Timer);
+
+	  for(;;) {
+		  char c;
+	      if (XUartPs_Recv(&Uart_Ps, &c, 1) == 1) {
+			  xil_printf("Received: %c\r\n", c);
+		      static int led_state = 1;
+		      XGpio_DiscreteWrite(&GpioLed, 1, led_state);
+		      led_state ^= 0x1;  // Toggle LD0
+		      xil_printf("Blink\r\n");
+	          DTMFPair tones = GetDTMFFrequencies((char)c);
+	          if (tones.freq1 > 0 && tones.freq2 > 0) {
+	              PlayDTMF(tones.freq1, tones.freq2, 1.0f);
+	          }
+	      }
+
+	      /*DTMFPair tones = GetDTMFFrequencies('1');
+	      PlayDTMF(tones.freq1, tones.freq2, 1.0f);
+	      tones = GetDTMFFrequencies('9');
+	      PlayDTMF(tones.freq1, tones.freq2, 1.0f);*/
+
+
+	  }
+
+	  cleanup_platform();
+	  return 0;
+}
