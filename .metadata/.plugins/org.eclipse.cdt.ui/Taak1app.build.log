@@ -1,4 +1,4 @@
-14:58:29 **** Incremental Build of configuration Debug for project Taak1app ****
+16:12:47 **** Incremental Build of configuration Debug for project Taak1app ****
 make all 
 make --no-print-directory pre-build
 a9-linaro-pre-build-step
@@ -16,8 +16,8 @@ C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/A
   424 | #define XUartPs_IsTransmitEmpty(BaseAddress)                     \
       | 
 ../src/helloworld.c: In function 'sendingLoop':
-../src/helloworld.c:214:32: warning: pointer targets in passing argument 2 of 'XUartPs_Recv' differ in signedness [-Wpointer-sign]
-  214 |     if (XUartPs_Recv(&Uart_Ps, &c, 1) == 1) {
+../src/helloworld.c:243:32: warning: pointer targets in passing argument 2 of 'XUartPs_Recv' differ in signedness [-Wpointer-sign]
+  243 |     if (XUartPs_Recv(&Uart_Ps, &c, 1) == 1) {
       |                                ^~
       |                                |
       |                                char *
@@ -25,8 +25,8 @@ C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/A
   471 | u32 XUartPs_Recv(XUartPs *InstancePtr,u8 *BufferPtr,
       |                                       ~~~~^~~~~~~~~
 ../src/helloworld.c: In function 'main':
-../src/helloworld.c:229:15: warning: variable 'Status' set but not used [-Wunused-but-set-variable]
-  229 |           int Status;
+../src/helloworld.c:258:15: warning: variable 'Status' set but not used [-Wunused-but-set-variable]
+  258 |           int Status;
       |               ^~~~~~
 'Finished building: ../src/helloworld.c'
 ' '
@@ -37,9 +37,9 @@ C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/A
 'Invoking: ARM v7 Print Size'
 arm-none-eabi-size Taak1app.elf  |tee "Taak1app.elf.size"
    text	   data	    bss	    dec	    hex	filename
-2560201	  11796	30095696	32667693	1f2782d	Taak1app.elf
+2560841	  11796	30095696	32668333	1f27aad	Taak1app.elf
 'Finished building: Taak1app.elf.size'
 ' '
 
-14:58:53 Build Finished (took 23s.711ms)
+16:12:56 Build Finished (took 8s.647ms)
 

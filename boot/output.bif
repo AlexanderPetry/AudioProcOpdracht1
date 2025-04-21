@@ -1,0 +1,7 @@
+//arch = zynq; split = false; format = BIN
+the_ROM_image:
+{
+	[bootloader]C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\image_files\fsbl.elf
+	C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\image_files\design_1_wrapper.bit
+	C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\image_files\Taak1app.elf
+}

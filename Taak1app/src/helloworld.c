@@ -53,9 +53,10 @@ static void Timer_ISR(void * CallBackRef)
 	theta1 += inc1; if (theta1 > 2*PI) theta1 -= 2*PI;
 	theta2 += inc2; if (theta2 > 2*PI) theta2 -= 2*PI;
 
-	float32_t val = (arm_sin_f32(theta1) + arm_sin_f32(theta2)) * 0.5f;
+	float32_t val = (arm_sin_f32(theta1) + arm_sin_f32(theta2));
+	val = fmaxf(fminf(val, 1.0f), -1.0f); // clamp to avoid overflow
 	uint32_t scaled = (uint32_t)(((val + 1.0f) * 0.5f) * UINT_SCALED_MAX_VALUE);
-	Xil_Out32(I2S_DATA_TX_R_REG, scaled);
+	Xil_Out32(I2S_DATA_TX_L_REG, scaled);
 }
 
 static int Timer_Intr_Setup(XScuGic * IntcInstancePtr, XScuTimer *TimerInstancePtr, u16 TimerIntrId)
@@ -71,6 +72,33 @@ static int Timer_Intr_Setup(XScuGic * IntcInstancePtr, XScuTimer *TimerInstanceP
 	Xil_ExceptionEnable();
 	return XST_SUCCESS;
 }
+
+void DisplayDTMFOnLED(char key)
+{
+    uint8_t value = 0xF; // default for invalid key
+
+    switch (key) {
+        case '1': value = 0x1; break;
+        case '2': value = 0x2; break;
+        case '3': value = 0x3; break;
+        case 'A': value = 0x0; break;
+        case '4': value = 0x4; break;
+        case '5': value = 0x5; break;
+        case '6': value = 0x6; break;
+        case 'B': value = 0x7; break;
+        case '7': value = 0x8; break;
+        case '8': value = 0x9; break;
+        case '9': value = 0xA; break;
+        case 'C': value = 0xB; break;
+        case '*': value = 0xC; break;
+        case '0': value = 0xD; break;
+        case '#': value = 0xE; break;
+        case 'D': value = 0xF; break;
+    }
+
+    XGpio_DiscreteWrite(&GpioLed, 1, value);
+}
+
 
 typedef struct {
     float32_t freq1;
@@ -185,6 +213,7 @@ arm_status DetectDTMFFrequency()
 	char key = matchDTMF(freq1, freq2, &error);
 	if (error < 45) {
 		xil_printf("Detected Key: %c (error: %d Hz)\r\n", key, (int)error);
+		DisplayDTMFOnLED(key);
 	}
 
 	usleep(200000);
