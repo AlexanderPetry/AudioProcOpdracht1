@@ -24,12 +24,11 @@ bool isReceiveMode;
 #define INTC_DEVICE_ID		XPAR_SCUGIC_SINGLE_DEVICE_ID
 #define TIMER_IRPT_INTR		XPAR_SCUTIMER_INTR
 
-#define SAMPLE_RATE 		48000 // Sampling rate of audio input, is also used for generating an interrupt at this frequency. 48kHz.
 
 #define LED_CHANNEL 1
 #define LED_DELAY   1000000
 
-#define FFT_SIZE 1024
+#define FFT_SIZE 2048
 #define SAMPLE_BLOCK_SIZE (FFT_SIZE * 2)
 #define SAMPLE_RATE 48000
 
@@ -101,8 +100,43 @@ DTMFPair GetDTMFFrequencies(char key) {
     }
 }
 
-void DetectDTMFFrequency()
+typedef struct {
+    char key;
+    float low;
+    float high;
+} DTMFEntry;
+
+DTMFEntry dtmfTable[] = {
+    {'1', 697, 1209}, {'2', 697, 1336}, {'3', 697, 1477}, {'A', 697, 1633},
+    {'4', 770, 1209}, {'5', 770, 1336}, {'6', 770, 1477}, {'B', 770, 1633},
+    {'7', 852, 1209}, {'8', 852, 1336}, {'9', 852, 1477}, {'C', 852, 1633},
+    {'*', 941, 1209}, {'0', 941, 1336}, {'#', 941, 1477}, {'D', 941, 1633}
+};
+
+char matchDTMF(float f1, float f2, float *errorOut)
 {
+    char bestKey = '?';
+    float minError = 1e6;
+
+    for (int i = 0; i < sizeof(dtmfTable)/sizeof(DTMFEntry); i++) {
+        float df1 = fabsf(f1 - dtmfTable[i].low) + fabsf(f2 - dtmfTable[i].high);
+        float df2 = fabsf(f2 - dtmfTable[i].low) + fabsf(f1 - dtmfTable[i].high);
+        float err = (df1 < df2) ? df1 : df2;
+
+        if (err < minError) {
+            minError = err;
+            bestKey = dtmfTable[i].key;
+        }
+    }
+
+    if (errorOut) *errorOut = minError;
+    return bestKey;
+}
+
+arm_status DetectDTMFFrequency()
+{
+	arm_status status;
+	float32_t fftOutput[SAMPLE_BLOCK_SIZE];
 	float32_t scratchBuffer[SAMPLE_BLOCK_SIZE];
 
 	for (int i = 0; i < FFT_SIZE; i++) {
@@ -110,27 +144,54 @@ void DetectDTMFFrequency()
 		float32_t sample = (float32_t)raw / 8388608.0f;
 	    sampleBuffer[2*i] = sample;
 	    sampleBuffer[2*i+1] = 0.0f;
+	    usleep(20);
 	}
 
 	arm_cfft_instance_f32 fft_inst;
-	arm_cfft_init_f32(&fft_inst, FFT_SIZE);
-	arm_cfft_f32(&fft_inst, sampleBuffer, sampleBuffer, scratchBuffer, 0);
+	status = arm_cfft_init_f32(&fft_inst, FFT_SIZE);
+	arm_cfft_f32(&fft_inst, sampleBuffer, fftOutput, scratchBuffer, 0);
 
 	float32_t mag[FFT_SIZE];
-	arm_cmplx_mag_f32(sampleBuffer, mag, FFT_SIZE);
+	arm_cmplx_mag_f32(fftOutput, mag, FFT_SIZE);
 
 	uint32_t index;
 	float32_t max_val;
 	arm_max_f32(mag, FFT_SIZE, &max_val, &index);
-	xil_printf("Max magnitude: %f at index %d\r\n", max_val, index);
 
-	for (int i = 0; i < 10; i++) {
-	    uint32_t raw = Xil_In32(I2S_DATA_RX_L_REG);
-	    xil_printf("Raw[%d] = 0x%08X\r\n", i, raw);
+
+	int max1_idx = 1, max2_idx = 1;
+	float max1 = 0, max2 = 0;
+
+	for (int i = 1; i < FFT_SIZE / 2; i++) {
+	    if (mag[i] > max1) {
+	        max2 = max1; max2_idx = max1_idx;
+	        max1 = mag[i]; max1_idx = i;
+	    } else if (mag[i] > max2) {
+	        max2 = mag[i]; max2_idx = i;
+	    }
 	}
 
-	float32_t freq = ((float32_t)index * SAMPLE_RATE) / FFT_SIZE;
-	xil_printf("Detected Peak Frequency: %.1f Hz\r\n", freq);
+	float THRESHOLD = 0.05f;
+	if (max1 < THRESHOLD || max2 < THRESHOLD) {
+		xil_printf("silence");
+	    return;
+	}
+
+	float freq1 = max1_idx * SAMPLE_RATE / FFT_SIZE;
+	float freq2 = max2_idx * SAMPLE_RATE / FFT_SIZE;
+
+	xil_printf("Detected Frequencies: %d Hz and %d Hz\r\n", (int)freq1, (int)freq2);
+
+	float error;
+	char key = matchDTMF(freq1, freq2, &error);
+	if(error < 30)
+	{
+		xil_printf("Detected Key: %c (error: %d Hz)\r\n", key, (int)error);
+	}
+
+
+	usleep( 2 * 100000);
+	return status;
 }
 
 void PlayDTMF(float32_t f1, float32_t f2, float duration_sec)
