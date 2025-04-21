@@ -28,7 +28,7 @@ bool isReceiveMode;
 #define LED_CHANNEL 1
 #define LED_DELAY   1000000
 
-#define FFT_SIZE 2048
+#define FFT_SIZE 1024
 #define SAMPLE_BLOCK_SIZE (FFT_SIZE * 2)
 #define SAMPLE_RATE 48000
 
@@ -60,13 +60,12 @@ static void Timer_ISR(void * CallBackRef)
 
 static int Timer_Intr_Setup(XScuGic * IntcInstancePtr, XScuTimer *TimerInstancePtr, u16 TimerIntrId)
 {
-	int Status;
 	XScuGic_Config *IntcConfig;
 	IntcConfig = XScuGic_LookupConfig(INTC_DEVICE_ID);
-	Status = XScuGic_CfgInitialize(IntcInstancePtr, IntcConfig, IntcConfig->CpuBaseAddress);
+	XScuGic_CfgInitialize(IntcInstancePtr, IntcConfig, IntcConfig->CpuBaseAddress);
 	Xil_ExceptionInit();
 	Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_IRQ_INT, (Xil_ExceptionHandler)XScuGic_InterruptHandler,IntcInstancePtr);
-	Status = XScuGic_Connect(IntcInstancePtr, TimerIntrId, (Xil_ExceptionHandler)Timer_ISR, (void *)TimerInstancePtr);
+	XScuGic_Connect(IntcInstancePtr, TimerIntrId, (Xil_ExceptionHandler)Timer_ISR, (void *)TimerInstancePtr);
 	XScuGic_Enable(IntcInstancePtr, TimerIntrId);
 	XScuTimer_EnableInterrupt(TimerInstancePtr);
 	Xil_ExceptionEnable();
@@ -140,11 +139,11 @@ arm_status DetectDTMFFrequency()
 	float32_t scratchBuffer[SAMPLE_BLOCK_SIZE];
 
 	for (int i = 0; i < FFT_SIZE; i++) {
-		int32_t raw = (int32_t)(Xil_In32(I2S_DATA_RX_L_REG) << 8) >> 8; // 24-bit signed
+		int32_t raw = (int32_t)(Xil_In32(I2S_DATA_RX_L_REG) << 8) >> 8;
 		float32_t sample = (float32_t)raw / 8388608.0f;
-	    sampleBuffer[2*i] = sample;
-	    sampleBuffer[2*i+1] = 0.0f;
-	    usleep(20);
+		sampleBuffer[2*i] = sample;
+		sampleBuffer[2*i+1] = 0.0f;
+		usleep(20);
 	}
 
 	arm_cfft_instance_f32 fft_inst;
@@ -154,43 +153,41 @@ arm_status DetectDTMFFrequency()
 	float32_t mag[FFT_SIZE];
 	arm_cmplx_mag_f32(fftOutput, mag, FFT_SIZE);
 
-	uint32_t index;
-	float32_t max_val;
-	arm_max_f32(mag, FFT_SIZE, &max_val, &index);
-
-
-	int max1_idx = 1, max2_idx = 1;
-	float max1 = 0, max2 = 0;
+	float maxLow = 0, maxHigh = 0;
+	int lowIdx = -1, highIdx = -1;
 
 	for (int i = 1; i < FFT_SIZE / 2; i++) {
-	    if (mag[i] > max1) {
-	        max2 = max1; max2_idx = max1_idx;
-	        max1 = mag[i]; max1_idx = i;
-	    } else if (mag[i] > max2) {
-	        max2 = mag[i]; max2_idx = i;
-	    }
+		float freq = (float)i * SAMPLE_RATE / FFT_SIZE;
+		if (freq >= 650 && freq <= 1050) { // Low group
+			if (mag[i] > maxLow) {
+				maxLow = mag[i];
+				lowIdx = i;
+			}
+		} else if (freq >= 1100 && freq <= 1700) { // High group
+			if (mag[i] > maxHigh) {
+				maxHigh = mag[i];
+				highIdx = i;
+			}
+		}
 	}
 
-	float THRESHOLD = 0.05f;
-	if (max1 < THRESHOLD || max2 < THRESHOLD) {
-		xil_printf("silence");
-	    return;
+	if (lowIdx < 0 || highIdx < 0 || maxLow < 0.02f || maxHigh < 0.02f || (maxHigh / maxLow) < 0.3f) {
+		xil_printf("silence\r\n");
+		return ARM_MATH_SUCCESS;
 	}
 
-	float freq1 = max1_idx * SAMPLE_RATE / FFT_SIZE;
-	float freq2 = max2_idx * SAMPLE_RATE / FFT_SIZE;
+	float freq1 = lowIdx * SAMPLE_RATE / FFT_SIZE;
+	float freq2 = highIdx * SAMPLE_RATE / FFT_SIZE;
 
 	xil_printf("Detected Frequencies: %d Hz and %d Hz\r\n", (int)freq1, (int)freq2);
 
 	float error;
 	char key = matchDTMF(freq1, freq2, &error);
-	if(error < 30)
-	{
+	if (error < 45) {
 		xil_printf("Detected Key: %c (error: %d Hz)\r\n", key, (int)error);
 	}
 
-
-	usleep( 2 * 100000);
+	usleep(200000);
 	return status;
 }
 

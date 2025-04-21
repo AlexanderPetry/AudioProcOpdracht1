@@ -1669,3 +1669,1216 @@ operable program or batch file.
 10:56:50 INFO  : plnx-install-location is set to ''
 10:56:50 INFO  : Successfully done query RDI_DATADIR 
 10:56:50 INFO  : Successfully done setting workspace for the tool. 
+12:31:45 INFO  : Checking for BSP changes to sync application flags for project 'Taak1app'...
+12:32:55 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:32:57 INFO  : Jtag cable 'Xilinx HW-FTDI-TEST FT2232H 1234-tulA' is selected.
+12:32:57 INFO  : 'jtag frequency' command is executed.
+12:32:57 INFO  : Context for 'APU' is selected.
+12:32:57 INFO  : System reset is completed.
+12:33:00 INFO  : 'after 3000' command is executed.
+12:33:00 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}' command is executed.
+12:33:03 INFO  : Device configured successfully with "C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit"
+12:33:03 INFO  : Context for 'APU' is selected.
+12:33:03 INFO  : Hardware design and registers information is loaded from 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa'.
+12:33:03 INFO  : 'configparams force-mem-access 1' command is executed.
+12:33:03 INFO  : Context for 'APU' is selected.
+12:33:03 INFO  : Sourcing of 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl' is done.
+12:33:03 INFO  : 'ps7_init' command is executed.
+12:33:03 INFO  : 'ps7_post_config' command is executed.
+12:33:03 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+12:33:10 INFO  : The application 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf' is downloaded to processor 'ps7_cortexa9_0'.
+12:33:10 INFO  : 'configparams force-mem-access 0' command is executed.
+12:33:10 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}
+fpga -file C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+12:33:10 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+12:33:10 INFO  : 'con' command is executed.
+12:33:10 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+12:33:10 INFO  : Launch script is exported to file 'C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app_system\_ide\scripts\debugger_taak1app-default.tcl'
+12:41:41 INFO  : Checking for BSP changes to sync application flags for project 'Taak1app'...
+12:45:40 INFO  : Checking for BSP changes to sync application flags for project 'Taak1app'...
+12:46:15 INFO  : Disconnected from the channel tcfchan#1.
+12:46:16 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:46:25 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+12:46:25 ERROR : Could not find ARM device on the board for connection 'Local'.
+Check if the target is in:
+1. Split JTAG - No operations are possible with ARM DAP.
+2. Non JTAG bootmode - Bootrom may need time to enable DAP.
+Please try again.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.
+12:47:29 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:47:29 INFO  : Jtag cable 'Xilinx HW-FTDI-TEST FT2232H 1234-tulA' is selected.
+12:47:29 INFO  : 'jtag frequency' command is executed.
+12:47:30 INFO  : Context for 'APU' is selected.
+12:47:30 INFO  : System reset is completed.
+12:47:33 INFO  : 'after 3000' command is executed.
+12:47:33 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}' command is executed.
+12:47:35 INFO  : Device configured successfully with "C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit"
+12:47:35 INFO  : Context for 'APU' is selected.
+12:47:40 INFO  : Hardware design and registers information is loaded from 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa'.
+12:47:40 INFO  : 'configparams force-mem-access 1' command is executed.
+12:47:40 INFO  : Context for 'APU' is selected.
+12:47:40 INFO  : Sourcing of 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl' is done.
+12:47:41 INFO  : 'ps7_init' command is executed.
+12:47:41 INFO  : 'ps7_post_config' command is executed.
+12:47:41 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+12:47:48 INFO  : The application 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf' is downloaded to processor 'ps7_cortexa9_0'.
+12:47:48 INFO  : 'configparams force-mem-access 0' command is executed.
+12:47:48 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}
+fpga -file C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+12:47:48 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+12:47:48 INFO  : 'con' command is executed.
+12:47:48 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+12:47:48 INFO  : Launch script is exported to file 'C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app_system\_ide\scripts\debugger_taak1app-default_2.tcl'
+12:50:50 INFO  : Disconnected from the channel tcfchan#2.
+12:50:51 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:51:01 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+12:51:01 ERROR : Could not find ARM device on the board for connection 'Local'.
+Check if the target is in:
+1. Split JTAG - No operations are possible with ARM DAP.
+2. Non JTAG bootmode - Bootrom may need time to enable DAP.
+Please try again.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.
+12:51:14 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:51:14 INFO  : Jtag cable 'Xilinx HW-FTDI-TEST FT2232H 1234-tulA' is selected.
+12:51:14 INFO  : 'jtag frequency' command is executed.
+12:51:14 INFO  : Context for 'APU' is selected.
+12:51:14 INFO  : System reset is completed.
+12:51:17 INFO  : 'after 3000' command is executed.
+12:51:17 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}' command is executed.
+12:51:20 INFO  : Device configured successfully with "C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit"
+12:51:20 INFO  : Context for 'APU' is selected.
+12:51:24 INFO  : Hardware design and registers information is loaded from 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa'.
+12:51:24 INFO  : 'configparams force-mem-access 1' command is executed.
+12:51:24 INFO  : Context for 'APU' is selected.
+12:51:24 INFO  : Sourcing of 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl' is done.
+12:51:25 INFO  : 'ps7_init' command is executed.
+12:51:25 INFO  : 'ps7_post_config' command is executed.
+12:51:25 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+12:51:32 INFO  : The application 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf' is downloaded to processor 'ps7_cortexa9_0'.
+12:51:32 INFO  : 'configparams force-mem-access 0' command is executed.
+12:51:32 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}
+fpga -file C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+12:51:32 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+12:51:32 INFO  : 'con' command is executed.
+12:51:32 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+12:51:32 INFO  : Launch script is exported to file 'C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app_system\_ide\scripts\debugger_taak1app-default_4.tcl'
+12:53:23 INFO  : Checking for BSP changes to sync application flags for project 'Taak1app'...
+12:53:43 INFO  : Disconnected from the channel tcfchan#3.
+12:53:44 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:53:44 INFO  : Jtag cable 'Xilinx HW-FTDI-TEST FT2232H 1234-tulA' is selected.
+12:53:44 INFO  : 'jtag frequency' command is executed.
+12:53:44 INFO  : Context for 'APU' is selected.
+12:53:44 INFO  : System reset is completed.
+12:53:47 INFO  : 'after 3000' command is executed.
+12:53:47 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}' command is executed.
+12:53:50 INFO  : Device configured successfully with "C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit"
+12:53:50 INFO  : Context for 'APU' is selected.
+12:53:55 INFO  : Hardware design and registers information is loaded from 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa'.
+12:53:55 INFO  : 'configparams force-mem-access 1' command is executed.
+12:53:55 INFO  : Context for 'APU' is selected.
+12:53:55 INFO  : Sourcing of 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl' is done.
+12:53:55 INFO  : 'ps7_init' command is executed.
+12:53:55 INFO  : 'ps7_post_config' command is executed.
+12:53:55 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+12:54:02 INFO  : The application 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf' is downloaded to processor 'ps7_cortexa9_0'.
+12:54:02 INFO  : 'configparams force-mem-access 0' command is executed.
+12:54:02 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}
+fpga -file C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+12:54:02 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+12:54:03 INFO  : 'con' command is executed.
+12:54:03 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+12:54:03 INFO  : Launch script is exported to file 'C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app_system\_ide\scripts\debugger_taak1app-default_5.tcl'
+12:54:34 INFO  : Checking for BSP changes to sync application flags for project 'Taak1app'...
+12:55:09 INFO  : Checking for BSP changes to sync application flags for project 'Taak1app'...
+12:55:29 INFO  : Disconnected from the channel tcfchan#4.
+12:55:30 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:55:30 INFO  : Jtag cable 'Xilinx HW-FTDI-TEST FT2232H 1234-tulA' is selected.
+12:55:30 INFO  : 'jtag frequency' command is executed.
+12:55:30 INFO  : Context for 'APU' is selected.
+12:55:30 INFO  : System reset is completed.
+12:55:33 INFO  : 'after 3000' command is executed.
+12:55:33 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}' command is executed.
+12:55:36 INFO  : Device configured successfully with "C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit"
+12:55:36 INFO  : Context for 'APU' is selected.
+12:55:40 INFO  : Hardware design and registers information is loaded from 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa'.
+12:55:40 INFO  : 'configparams force-mem-access 1' command is executed.
+12:55:40 INFO  : Context for 'APU' is selected.
+12:55:40 INFO  : Sourcing of 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl' is done.
+12:55:40 INFO  : 'ps7_init' command is executed.
+12:55:40 INFO  : 'ps7_post_config' command is executed.
+12:55:40 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+12:55:47 INFO  : The application 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf' is downloaded to processor 'ps7_cortexa9_0'.
+12:55:47 INFO  : 'configparams force-mem-access 0' command is executed.
+12:55:47 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}
+fpga -file C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+12:55:47 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+12:55:47 INFO  : 'con' command is executed.
+12:55:47 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+12:55:47 INFO  : Launch script is exported to file 'C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app_system\_ide\scripts\debugger_taak1app-default_6.tcl'
+12:57:13 INFO  : Disconnected from the channel tcfchan#5.
+12:57:14 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:57:15 INFO  : Jtag cable 'Xilinx HW-FTDI-TEST FT2232H 1234-tulA' is selected.
+12:57:15 INFO  : 'jtag frequency' command is executed.
+12:57:15 INFO  : Context for 'APU' is selected.
+12:57:15 INFO  : System reset is completed.
+12:57:18 INFO  : 'after 3000' command is executed.
+12:57:18 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}' command is executed.
+12:57:20 INFO  : Device configured successfully with "C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit"
+12:57:20 INFO  : Context for 'APU' is selected.
+12:57:24 INFO  : Hardware design and registers information is loaded from 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa'.
+12:57:24 INFO  : 'configparams force-mem-access 1' command is executed.
+12:57:24 INFO  : Context for 'APU' is selected.
+12:57:24 INFO  : Sourcing of 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl' is done.
+12:57:25 INFO  : 'ps7_init' command is executed.
+12:57:25 INFO  : 'ps7_post_config' command is executed.
+12:57:25 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+12:57:33 INFO  : The application 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf' is downloaded to processor 'ps7_cortexa9_0'.
+12:57:33 INFO  : 'configparams force-mem-access 0' command is executed.
+12:57:33 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}
+fpga -file C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+12:57:33 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+12:57:33 INFO  : 'con' command is executed.
+12:57:33 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+12:57:33 INFO  : Launch script is exported to file 'C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app_system\_ide\scripts\debugger_taak1app-default_7.tcl'
+12:59:16 INFO  : Checking for BSP changes to sync application flags for project 'Taak1app'...
+12:59:43 INFO  : Disconnected from the channel tcfchan#6.
+12:59:44 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:59:53 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+12:59:53 ERROR : Could not find ARM device on the board for connection 'Local'.
+Check if the target is in:
+1. Split JTAG - No operations are possible with ARM DAP.
+2. Non JTAG bootmode - Bootrom may need time to enable DAP.
+Please try again.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.
+13:00:38 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:00:41 INFO  : Jtag cable 'Xilinx HW-FTDI-TEST FT2232H 1234-tulA' is selected.
+13:00:41 INFO  : 'jtag frequency' command is executed.
+13:00:41 INFO  : Context for 'APU' is selected.
+13:00:41 INFO  : System reset is completed.
+13:00:44 INFO  : 'after 3000' command is executed.
+13:00:44 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}' command is executed.
+13:00:46 INFO  : Device configured successfully with "C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit"
+13:00:47 INFO  : Context for 'APU' is selected.
+13:00:52 INFO  : Hardware design and registers information is loaded from 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa'.
+13:00:52 INFO  : 'configparams force-mem-access 1' command is executed.
+13:00:52 INFO  : Context for 'APU' is selected.
+13:00:52 INFO  : Sourcing of 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl' is done.
+13:00:52 INFO  : 'ps7_init' command is executed.
+13:00:52 INFO  : 'ps7_post_config' command is executed.
+13:00:53 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:01:00 INFO  : The application 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:01:00 INFO  : 'configparams force-mem-access 0' command is executed.
+13:01:00 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}
+fpga -file C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:01:00 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:01:00 INFO  : 'con' command is executed.
+13:01:00 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+13:01:00 INFO  : Launch script is exported to file 'C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app_system\_ide\scripts\debugger_taak1app-default_9.tcl'
+13:01:24 INFO  : Disconnected from the channel tcfchan#7.
+13:01:25 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:01:25 INFO  : Jtag cable 'Xilinx HW-FTDI-TEST FT2232H 1234-tulA' is selected.
+13:01:25 INFO  : 'jtag frequency' command is executed.
+13:01:25 INFO  : Context for 'APU' is selected.
+13:01:25 INFO  : System reset is completed.
+13:01:28 INFO  : 'after 3000' command is executed.
+13:01:28 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}' command is executed.
+13:01:31 INFO  : Device configured successfully with "C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit"
+13:01:31 INFO  : Context for 'APU' is selected.
+13:01:39 INFO  : Hardware design and registers information is loaded from 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa'.
+13:01:39 INFO  : 'configparams force-mem-access 1' command is executed.
+13:01:39 INFO  : Context for 'APU' is selected.
+13:01:39 INFO  : Sourcing of 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl' is done.
+13:01:39 INFO  : 'ps7_init' command is executed.
+13:01:39 INFO  : 'ps7_post_config' command is executed.
+13:01:39 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:01:47 INFO  : The application 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:01:48 INFO  : 'configparams force-mem-access 0' command is executed.
+13:01:48 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}
+fpga -file C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:01:48 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:01:48 INFO  : 'con' command is executed.
+13:01:48 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+13:01:48 INFO  : Launch script is exported to file 'C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app_system\_ide\scripts\debugger_taak1app-default_10.tcl'
+13:03:16 INFO  : Disconnected from the channel tcfchan#8.
+13:03:17 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:03:21 INFO  : Jtag cable 'Xilinx HW-FTDI-TEST FT2232H 1234-tulA' is selected.
+13:03:21 INFO  : 'jtag frequency' command is executed.
+13:03:21 INFO  : Context for 'APU' is selected.
+13:03:21 INFO  : System reset is completed.
+13:03:24 INFO  : 'after 3000' command is executed.
+13:03:24 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}' command is executed.
+13:03:27 INFO  : Device configured successfully with "C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit"
+13:03:27 INFO  : Context for 'APU' is selected.
+13:03:33 INFO  : Hardware design and registers information is loaded from 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa'.
+13:03:33 INFO  : 'configparams force-mem-access 1' command is executed.
+13:03:33 INFO  : Context for 'APU' is selected.
+13:03:33 INFO  : Sourcing of 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl' is done.
+13:03:33 INFO  : 'ps7_init' command is executed.
+13:03:33 INFO  : 'ps7_post_config' command is executed.
+13:03:34 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:03:41 INFO  : The application 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:03:41 INFO  : 'configparams force-mem-access 0' command is executed.
+13:03:41 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}
+fpga -file C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:03:41 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:03:41 INFO  : 'con' command is executed.
+13:03:41 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+13:03:41 INFO  : Launch script is exported to file 'C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app_system\_ide\scripts\debugger_taak1app-default_10.tcl'
+13:04:23 INFO  : Disconnected from the channel tcfchan#9.
+13:04:24 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:04:25 INFO  : Jtag cable 'Xilinx HW-FTDI-TEST FT2232H 1234-tulA' is selected.
+13:04:25 INFO  : 'jtag frequency' command is executed.
+13:04:25 INFO  : Context for 'APU' is selected.
+13:04:25 INFO  : System reset is completed.
+13:04:28 INFO  : 'after 3000' command is executed.
+13:04:28 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}' command is executed.
+13:04:30 INFO  : Device configured successfully with "C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit"
+13:04:31 INFO  : Context for 'APU' is selected.
+13:04:36 INFO  : Hardware design and registers information is loaded from 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa'.
+13:04:36 INFO  : 'configparams force-mem-access 1' command is executed.
+13:04:36 INFO  : Context for 'APU' is selected.
+13:04:36 INFO  : Sourcing of 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl' is done.
+13:04:38 INFO  : 'ps7_init' command is executed.
+13:04:38 INFO  : 'ps7_post_config' command is executed.
+13:04:38 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:04:47 INFO  : The application 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:04:47 INFO  : 'configparams force-mem-access 0' command is executed.
+13:04:47 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}
+fpga -file C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:04:48 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:04:48 INFO  : 'con' command is executed.
+13:04:48 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+13:04:48 INFO  : Launch script is exported to file 'C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app_system\_ide\scripts\debugger_taak1app-default_10.tcl'
+13:08:19 INFO  : Checking for BSP changes to sync application flags for project 'Taak1app'...
+13:08:42 INFO  : Disconnected from the channel tcfchan#10.
+13:08:43 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:08:44 INFO  : Jtag cable 'Xilinx HW-FTDI-TEST FT2232H 1234-tulA' is selected.
+13:08:44 INFO  : 'jtag frequency' command is executed.
+13:08:44 INFO  : Context for 'APU' is selected.
+13:08:44 INFO  : System reset is completed.
+13:08:47 INFO  : 'after 3000' command is executed.
+13:08:47 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}' command is executed.
+13:08:49 INFO  : Device configured successfully with "C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit"
+13:08:49 INFO  : Context for 'APU' is selected.
+13:08:55 INFO  : Hardware design and registers information is loaded from 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa'.
+13:08:55 INFO  : 'configparams force-mem-access 1' command is executed.
+13:08:55 INFO  : Context for 'APU' is selected.
+13:08:55 INFO  : Sourcing of 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl' is done.
+13:08:55 INFO  : 'ps7_init' command is executed.
+13:08:55 INFO  : 'ps7_post_config' command is executed.
+13:08:55 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:09:02 INFO  : The application 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:09:02 INFO  : 'configparams force-mem-access 0' command is executed.
+13:09:02 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}
+fpga -file C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:09:03 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:09:03 INFO  : 'con' command is executed.
+13:09:03 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+13:09:03 INFO  : Launch script is exported to file 'C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app_system\_ide\scripts\debugger_taak1app-default_11.tcl'
+13:10:16 INFO  : Disconnected from the channel tcfchan#11.
+13:10:17 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:10:17 INFO  : Jtag cable 'Xilinx HW-FTDI-TEST FT2232H 1234-tulA' is selected.
+13:10:17 INFO  : 'jtag frequency' command is executed.
+13:10:17 INFO  : Context for 'APU' is selected.
+13:10:17 INFO  : System reset is completed.
+13:10:20 INFO  : 'after 3000' command is executed.
+13:10:21 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}' command is executed.
+13:10:23 INFO  : Device configured successfully with "C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit"
+13:10:23 INFO  : Context for 'APU' is selected.
+13:10:28 INFO  : Hardware design and registers information is loaded from 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa'.
+13:10:28 INFO  : 'configparams force-mem-access 1' command is executed.
+13:10:28 INFO  : Context for 'APU' is selected.
+13:10:28 INFO  : Sourcing of 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl' is done.
+13:10:29 INFO  : 'ps7_init' command is executed.
+13:10:29 INFO  : 'ps7_post_config' command is executed.
+13:10:29 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:10:40 INFO  : The application 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:10:40 INFO  : 'configparams force-mem-access 0' command is executed.
+13:10:40 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}
+fpga -file C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:10:40 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:10:40 INFO  : 'con' command is executed.
+13:10:40 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+13:10:40 INFO  : Launch script is exported to file 'C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app_system\_ide\scripts\debugger_taak1app-default_12.tcl'
+13:11:16 INFO  : Disconnected from the channel tcfchan#12.
+13:11:17 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:11:26 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+13:11:26 ERROR : Could not find ARM device on the board for connection 'Local'.
+Check if the target is in:
+1. Split JTAG - No operations are possible with ARM DAP.
+2. Non JTAG bootmode - Bootrom may need time to enable DAP.
+Please try again.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.
+13:11:40 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:11:40 INFO  : Jtag cable 'Xilinx HW-FTDI-TEST FT2232H 1234-tulA' is selected.
+13:11:40 INFO  : 'jtag frequency' command is executed.
+13:11:40 INFO  : Context for 'APU' is selected.
+13:11:41 INFO  : System reset is completed.
+13:11:44 INFO  : 'after 3000' command is executed.
+13:11:44 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}' command is executed.
+13:11:46 INFO  : Device configured successfully with "C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit"
+13:11:46 INFO  : Context for 'APU' is selected.
+13:11:52 INFO  : Hardware design and registers information is loaded from 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa'.
+13:11:52 INFO  : 'configparams force-mem-access 1' command is executed.
+13:11:52 INFO  : Context for 'APU' is selected.
+13:11:52 INFO  : Sourcing of 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl' is done.
+13:11:52 INFO  : 'ps7_init' command is executed.
+13:11:52 INFO  : 'ps7_post_config' command is executed.
+13:11:52 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:12:03 INFO  : The application 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:12:03 INFO  : 'configparams force-mem-access 0' command is executed.
+13:12:03 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}
+fpga -file C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:12:03 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:12:03 INFO  : 'con' command is executed.
+13:12:03 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+13:12:03 INFO  : Launch script is exported to file 'C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app_system\_ide\scripts\debugger_taak1app-default_14.tcl'
+13:18:33 INFO  : Checking for BSP changes to sync application flags for project 'Taak1app'...
+13:19:10 INFO  : Disconnected from the channel tcfchan#13.
+13:19:11 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:19:20 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+13:19:20 ERROR : Could not find ARM device on the board for connection 'Local'.
+Check if the target is in:
+1. Split JTAG - No operations are possible with ARM DAP.
+2. Non JTAG bootmode - Bootrom may need time to enable DAP.
+Please try again.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.
+13:20:11 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:20:12 INFO  : Jtag cable 'Xilinx HW-FTDI-TEST FT2232H 1234-tulA' is selected.
+13:20:12 INFO  : 'jtag frequency' command is executed.
+13:20:12 INFO  : Context for 'APU' is selected.
+13:20:12 INFO  : System reset is completed.
+13:20:15 INFO  : 'after 3000' command is executed.
+13:20:15 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}' command is executed.
+13:20:18 INFO  : Device configured successfully with "C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit"
+13:20:18 INFO  : Context for 'APU' is selected.
+13:20:23 INFO  : Hardware design and registers information is loaded from 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa'.
+13:20:23 INFO  : 'configparams force-mem-access 1' command is executed.
+13:20:23 INFO  : Context for 'APU' is selected.
+13:20:23 INFO  : Sourcing of 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl' is done.
+13:20:24 INFO  : 'ps7_init' command is executed.
+13:20:24 INFO  : 'ps7_post_config' command is executed.
+13:20:24 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:20:31 INFO  : The application 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:20:31 INFO  : 'configparams force-mem-access 0' command is executed.
+13:20:31 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}
+fpga -file C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:20:31 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:20:31 INFO  : 'con' command is executed.
+13:20:31 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+13:20:31 INFO  : Launch script is exported to file 'C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app_system\_ide\scripts\debugger_taak1app-default_16.tcl'
+13:29:29 INFO  : Checking for BSP changes to sync application flags for project 'Taak1app'...
+13:30:04 INFO  : Checking for BSP changes to sync application flags for project 'Taak1app'...
+13:31:48 INFO  : Disconnected from the channel tcfchan#14.
+13:31:49 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:31:49 INFO  : Jtag cable 'Xilinx HW-FTDI-TEST FT2232H 1234-tulA' is selected.
+13:31:49 INFO  : 'jtag frequency' command is executed.
+13:31:49 INFO  : Context for 'APU' is selected.
+13:31:49 INFO  : System reset is completed.
+13:31:52 INFO  : 'after 3000' command is executed.
+13:31:52 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}' command is executed.
+13:31:55 INFO  : Device configured successfully with "C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit"
+13:31:55 INFO  : Context for 'APU' is selected.
+13:32:01 INFO  : Hardware design and registers information is loaded from 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa'.
+13:32:01 INFO  : 'configparams force-mem-access 1' command is executed.
+13:32:01 INFO  : Context for 'APU' is selected.
+13:32:01 INFO  : Sourcing of 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl' is done.
+13:32:01 INFO  : 'ps7_init' command is executed.
+13:32:01 INFO  : 'ps7_post_config' command is executed.
+13:32:01 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:32:08 INFO  : The application 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:32:08 INFO  : 'configparams force-mem-access 0' command is executed.
+13:32:08 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}
+fpga -file C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:32:08 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:32:08 INFO  : 'con' command is executed.
+13:32:08 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+13:32:08 INFO  : Launch script is exported to file 'C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app_system\_ide\scripts\debugger_taak1app-default_17.tcl'
+13:33:20 INFO  : Disconnected from the channel tcfchan#15.
+13:33:21 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:33:30 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+13:33:30 ERROR : Could not find ARM device on the board for connection 'Local'.
+Check if the target is in:
+1. Split JTAG - No operations are possible with ARM DAP.
+2. Non JTAG bootmode - Bootrom may need time to enable DAP.
+Please try again.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.
+13:33:42 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:33:43 INFO  : Jtag cable 'Xilinx HW-FTDI-TEST FT2232H 1234-tulA' is selected.
+13:33:43 INFO  : 'jtag frequency' command is executed.
+13:33:43 INFO  : Context for 'APU' is selected.
+13:33:43 INFO  : System reset is completed.
+13:33:46 INFO  : 'after 3000' command is executed.
+13:33:46 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}' command is executed.
+13:33:49 INFO  : Device configured successfully with "C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit"
+13:33:49 INFO  : Context for 'APU' is selected.
+13:33:55 INFO  : Hardware design and registers information is loaded from 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa'.
+13:33:55 INFO  : 'configparams force-mem-access 1' command is executed.
+13:33:55 INFO  : Context for 'APU' is selected.
+13:33:55 INFO  : Sourcing of 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl' is done.
+13:33:56 INFO  : 'ps7_init' command is executed.
+13:33:56 INFO  : 'ps7_post_config' command is executed.
+13:33:56 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:34:04 INFO  : The application 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:34:04 INFO  : 'configparams force-mem-access 0' command is executed.
+13:34:04 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}
+fpga -file C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:34:04 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:34:04 INFO  : 'con' command is executed.
+13:34:04 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+13:34:04 INFO  : Launch script is exported to file 'C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app_system\_ide\scripts\debugger_taak1app-default_19.tcl'
+13:38:06 INFO  : Checking for BSP changes to sync application flags for project 'Taak1app'...
+13:42:39 INFO  : Checking for BSP changes to sync application flags for project 'Taak1app'...
+13:43:08 INFO  : Disconnected from the channel tcfchan#16.
+13:43:09 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:43:10 INFO  : Jtag cable 'Xilinx HW-FTDI-TEST FT2232H 1234-tulA' is selected.
+13:43:10 INFO  : 'jtag frequency' command is executed.
+13:43:10 INFO  : Context for 'APU' is selected.
+13:43:10 INFO  : System reset is completed.
+13:43:13 INFO  : 'after 3000' command is executed.
+13:43:13 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}' command is executed.
+13:43:16 INFO  : Device configured successfully with "C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit"
+13:43:16 INFO  : Context for 'APU' is selected.
+13:43:22 INFO  : Hardware design and registers information is loaded from 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa'.
+13:43:22 INFO  : 'configparams force-mem-access 1' command is executed.
+13:43:22 INFO  : Context for 'APU' is selected.
+13:43:22 INFO  : Sourcing of 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl' is done.
+13:43:23 INFO  : 'ps7_init' command is executed.
+13:43:23 INFO  : 'ps7_post_config' command is executed.
+13:43:23 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:43:31 INFO  : The application 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:43:31 INFO  : 'configparams force-mem-access 0' command is executed.
+13:43:31 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}
+fpga -file C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:43:31 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:43:31 INFO  : 'con' command is executed.
+13:43:31 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+13:43:31 INFO  : Launch script is exported to file 'C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app_system\_ide\scripts\debugger_taak1app-default_20.tcl'
+13:46:17 INFO  : Checking for BSP changes to sync application flags for project 'Taak1app'...
+13:47:48 INFO  : Disconnected from the channel tcfchan#17.
+13:47:49 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:47:50 INFO  : Jtag cable 'Xilinx HW-FTDI-TEST FT2232H 1234-tulA' is selected.
+13:47:50 INFO  : 'jtag frequency' command is executed.
+13:47:50 INFO  : Context for 'APU' is selected.
+13:47:50 INFO  : System reset is completed.
+13:47:53 INFO  : 'after 3000' command is executed.
+13:47:53 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}' command is executed.
+13:47:55 INFO  : Device configured successfully with "C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit"
+13:47:55 INFO  : Context for 'APU' is selected.
+13:48:02 INFO  : Hardware design and registers information is loaded from 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa'.
+13:48:02 INFO  : 'configparams force-mem-access 1' command is executed.
+13:48:02 INFO  : Context for 'APU' is selected.
+13:48:02 INFO  : Sourcing of 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl' is done.
+13:48:03 INFO  : 'ps7_init' command is executed.
+13:48:03 INFO  : 'ps7_post_config' command is executed.
+13:48:03 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:48:10 INFO  : The application 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:48:10 INFO  : 'configparams force-mem-access 0' command is executed.
+13:48:10 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}
+fpga -file C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:48:11 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:48:11 INFO  : 'con' command is executed.
+13:48:11 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+13:48:11 INFO  : Launch script is exported to file 'C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app_system\_ide\scripts\debugger_taak1app-default_21.tcl'
+13:49:40 INFO  : Disconnected from the channel tcfchan#18.
+13:49:42 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:49:50 INFO  : Jtag cable 'Xilinx HW-FTDI-TEST FT2232H 1234-tulA' is selected.
+13:49:50 INFO  : 'jtag frequency' command is executed.
+13:49:50 INFO  : Context for 'APU' is selected.
+13:49:50 INFO  : System reset is completed.
+13:49:53 INFO  : 'after 3000' command is executed.
+13:49:54 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}' command is executed.
+13:49:57 INFO  : Device configured successfully with "C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit"
+13:49:57 INFO  : Context for 'APU' is selected.
+13:50:05 INFO  : Hardware design and registers information is loaded from 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa'.
+13:50:05 INFO  : 'configparams force-mem-access 1' command is executed.
+13:50:05 INFO  : Context for 'APU' is selected.
+13:50:05 INFO  : Sourcing of 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl' is done.
+13:50:06 INFO  : 'ps7_init' command is executed.
+13:50:06 INFO  : 'ps7_post_config' command is executed.
+13:50:06 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:50:25 INFO  : The application 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:50:25 INFO  : 'configparams force-mem-access 0' command is executed.
+13:50:25 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}
+fpga -file C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:50:25 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:50:25 INFO  : 'con' command is executed.
+13:50:25 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+13:50:25 INFO  : Launch script is exported to file 'C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app_system\_ide\scripts\debugger_taak1app-default_22.tcl'
+13:56:09 INFO  : Checking for BSP changes to sync application flags for project 'Taak1app'...
+13:56:50 INFO  : Checking for BSP changes to sync application flags for project 'Taak1app'...
+13:57:30 INFO  : Disconnected from the channel tcfchan#19.
+13:57:31 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:57:32 INFO  : Jtag cable 'Xilinx HW-FTDI-TEST FT2232H 1234-tulA' is selected.
+13:57:32 INFO  : 'jtag frequency' command is executed.
+13:57:32 INFO  : Context for 'APU' is selected.
+13:57:33 INFO  : System reset is completed.
+13:57:36 INFO  : 'after 3000' command is executed.
+13:57:36 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}' command is executed.
+13:57:38 INFO  : Device configured successfully with "C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit"
+13:57:38 INFO  : Context for 'APU' is selected.
+13:57:44 INFO  : Hardware design and registers information is loaded from 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa'.
+13:57:44 INFO  : 'configparams force-mem-access 1' command is executed.
+13:57:44 INFO  : Context for 'APU' is selected.
+13:57:44 INFO  : Sourcing of 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl' is done.
+13:57:45 INFO  : 'ps7_init' command is executed.
+13:57:45 INFO  : 'ps7_post_config' command is executed.
+13:57:45 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:57:53 INFO  : The application 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:57:53 INFO  : 'configparams force-mem-access 0' command is executed.
+13:57:53 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}
+fpga -file C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:57:53 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:57:53 INFO  : 'con' command is executed.
+13:57:53 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+13:57:53 INFO  : Launch script is exported to file 'C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app_system\_ide\scripts\debugger_taak1app-default_23.tcl'
+14:05:13 INFO  : Checking for BSP changes to sync application flags for project 'Taak1app'...
+14:05:57 INFO  : Disconnected from the channel tcfchan#20.
+14:05:58 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:06:16 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+14:06:16 ERROR : Could not find ARM device on the board for connection 'Local'.
+Check if the target is in:
+1. Split JTAG - No operations are possible with ARM DAP.
+2. Non JTAG bootmode - Bootrom may need time to enable DAP.
+Please try again.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.
+14:06:26 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:06:30 INFO  : Jtag cable 'Xilinx HW-FTDI-TEST FT2232H 1234-tulA' is selected.
+14:06:30 INFO  : 'jtag frequency' command is executed.
+14:06:30 INFO  : Context for 'APU' is selected.
+14:06:30 INFO  : System reset is completed.
+14:06:33 INFO  : 'after 3000' command is executed.
+14:06:34 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}' command is executed.
+14:06:38 INFO  : Device configured successfully with "C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit"
+14:06:38 INFO  : Context for 'APU' is selected.
+14:06:45 INFO  : Hardware design and registers information is loaded from 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa'.
+14:06:45 INFO  : 'configparams force-mem-access 1' command is executed.
+14:06:45 INFO  : Context for 'APU' is selected.
+14:06:45 INFO  : Sourcing of 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl' is done.
+14:06:47 INFO  : 'ps7_init' command is executed.
+14:06:47 INFO  : 'ps7_post_config' command is executed.
+14:06:47 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:07:03 INFO  : The application 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf' is downloaded to processor 'ps7_cortexa9_0'.
+14:07:03 INFO  : 'configparams force-mem-access 0' command is executed.
+14:07:03 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}
+fpga -file C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+14:07:04 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:07:04 INFO  : 'con' command is executed.
+14:07:04 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+14:07:04 INFO  : Launch script is exported to file 'C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app_system\_ide\scripts\debugger_taak1app-default_25.tcl'
+14:07:58 INFO  : Disconnected from the channel tcfchan#21.
+14:07:59 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:08:01 INFO  : Jtag cable 'Xilinx HW-FTDI-TEST FT2232H 1234-tulA' is selected.
+14:08:01 INFO  : 'jtag frequency' command is executed.
+14:08:02 INFO  : Context for 'APU' is selected.
+14:08:02 INFO  : System reset is completed.
+14:08:05 INFO  : 'after 3000' command is executed.
+14:08:07 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}' command is executed.
+14:08:25 INFO  : Device configured successfully with "C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit"
+14:08:25 INFO  : Context for 'APU' is selected.
+14:08:33 INFO  : Hardware design and registers information is loaded from 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa'.
+14:08:39 INFO  : 'configparams force-mem-access 1' command is executed.
+14:08:39 INFO  : Context for 'APU' is selected.
+14:08:39 INFO  : Sourcing of 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl' is done.
+14:08:40 INFO  : 'ps7_init' command is executed.
+14:08:41 INFO  : 'ps7_post_config' command is executed.
+14:08:41 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:09:17 INFO  : The application 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf' is downloaded to processor 'ps7_cortexa9_0'.
+14:09:17 INFO  : 'configparams force-mem-access 0' command is executed.
+14:09:17 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}
+fpga -file C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+14:09:17 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:09:17 INFO  : 'con' command is executed.
+14:09:17 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+14:09:17 INFO  : Launch script is exported to file 'C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\Taak1app_system\_ide\scripts\debugger_taak1app-default_26.tcl'
+14:16:15 INFO  : Disconnected from the channel tcfchan#22.
+14:16:17 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:16:31 INFO  : Jtag cable 'Xilinx HW-FTDI-TEST FT2232H 1234-tulA' is selected.
+14:16:33 INFO  : 'jtag frequency' command is executed.
+14:16:39 INFO  : Context for 'APU' is selected.
+14:16:43 INFO  : System reset is completed.
+14:16:46 INFO  : 'after 3000' command is executed.
+14:16:50 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}' command is executed.
+14:17:40 INFO  : Device configured successfully with "C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit"
+14:17:47 INFO  : Context for 'APU' is selected.
+14:17:57 INFO  : Hardware design and registers information is loaded from 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa'.
+14:17:58 INFO  : 'configparams force-mem-access 1' command is executed.
+14:17:59 INFO  : Context for 'APU' is selected.
+14:17:59 INFO  : Sourcing of 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl' is done.
+14:18:25 INFO  : 'ps7_init' command is executed.
+14:18:34 INFO  : 'ps7_post_config' command is executed.
+14:18:35 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:19:29 ERROR : Invalid context
+14:19:29 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}
+fpga -file C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf
+----------------End of Script----------------
+
+14:19:29 ERROR : Invalid context
+14:19:42 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:20:44 INFO  : Jtag cable 'Xilinx HW-FTDI-TEST FT2232H 1234-tulA' is selected.
+14:20:49 INFO  : 'jtag frequency' command is executed.
+14:20:52 INFO  : Context for 'APU' is selected.
+14:20:54 INFO  : System reset is completed.
+14:21:00 INFO  : 'after 3000' command is executed.
+14:21:09 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}' command is executed.
+14:21:22 INFO  : Device configured successfully with "C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit"
+14:21:24 INFO  : Context for 'APU' is selected.
+14:21:26 INFO  : Hardware design and registers information is loaded from 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa'.
+14:21:27 INFO  : 'configparams force-mem-access 1' command is executed.
+14:21:28 INFO  : Context for 'APU' is selected.
+14:21:34 INFO  : Sourcing of 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl' is done.
+14:21:36 INFO  : 'ps7_init' command is executed.
+14:21:38 INFO  : 'ps7_post_config' command is executed.
+14:21:40 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:24:34 ERROR : Memory write error at 0x2C8000. Cannot flush JTAG server queue. FT_Write failed: io error
+14:24:34 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx HW-FTDI-TEST FT2232H 1234-tulA" && level==0 && jtag_device_ctx=="jsn-HW-FTDI-TEST FT2232H-1234-tulA-23727093-0"}
+fpga -file C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/bitstream/AudioProcessing2.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/Taak1app/Debug/Taak1app.elf
+----------------End of Script----------------
+
+14:24:34 ERROR : Memory write error at 0x2C8000. Cannot flush JTAG server queue. FT_Write failed: io error

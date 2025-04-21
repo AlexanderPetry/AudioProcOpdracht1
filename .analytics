@@ -127,3 +127,15 @@ timestamp=[2025-04-21 13:46:38], mode=BUILD, duration=0:00:19.555, duration_ms=1
 timestamp=[2025-04-21 13:56:30], mode=BUILD, duration=0:00:20.179, duration_ms=20179, data={name=Taak1app, configuration=Debug, clean_build=false}
 timestamp=[2025-04-21 13:57:11], mode=BUILD, duration=0:00:19.586, duration_ms=19586, data={name=Taak1app, configuration=Debug, clean_build=false}
 timestamp=[2025-04-21 14:05:40], mode=BUILD, duration=0:00:26.016, duration_ms=26016, data={name=Taak1app, configuration=Debug, clean_build=false}
+timestamp=[2025-04-21 14:25:45], mode=WORKBENCH_START, duration=0:00:09.578, duration_ms=9578, data={}
+timestamp=[2025-04-21 14:25:45], mode=WORKBENCH_UI_INIT, duration=0:00:00.312, duration_ms=312, data={editors_count=16, platform_editors_count=0, projects_count=4, platform_projects_count=1, active_platform_editor=false, projects=AudioProcessing2,RemoteSystemsTempFiles,Taak1app,Taak1app_system}
+timestamp=[2025-04-21 14:25:46], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.063, duration_ms=63, data={}
+timestamp=[2025-04-21 14:35:42], mode=BUILD, duration=0:00:00.826, duration_ms=826, data={name=Taak1app, configuration=Debug, clean_build=true}
+timestamp=[2025-04-21 14:35:55], mode=BUILD, duration=0:00:11.698, duration_ms=11698, data={name=Taak1app, configuration=Debug, clean_build=false}
+timestamp=[2025-04-21 14:40:33], mode=BUILD, duration=0:00:09.803, duration_ms=9803, data={name=Taak1app, configuration=Debug, clean_build=false}
+timestamp=[2025-04-21 14:41:00], mode=BUILD, duration=0:00:09.789, duration_ms=9789, data={name=Taak1app, configuration=Debug, clean_build=false}
+timestamp=[2025-04-21 14:41:30], mode=BUILD, duration=0:00:11.825, duration_ms=11825, data={name=Taak1app, configuration=Debug, clean_build=false}
+timestamp=[2025-04-21 14:46:01], mode=BUILD, duration=0:00:12.633, duration_ms=12633, data={name=Taak1app, configuration=Debug, clean_build=false}
+timestamp=[2025-04-21 14:48:26], mode=BUILD, duration=0:00:14.385, duration_ms=14385, data={name=Taak1app, configuration=Debug, clean_build=false}
+timestamp=[2025-04-21 14:54:11], mode=BUILD, duration=0:00:16.853, duration_ms=16853, data={name=Taak1app, configuration=Debug, clean_build=false}
+timestamp=[2025-04-21 14:58:53], mode=BUILD, duration=0:00:24.035, duration_ms=24035, data={name=Taak1app, configuration=Debug, clean_build=false}
