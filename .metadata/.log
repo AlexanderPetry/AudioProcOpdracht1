@@ -58,3 +58,175 @@ Created Time: 2025-04-21 16:13:10.640
 
 !ENTRY com.xilinx.sdk.utils 1 0 2025-04-21 16:13:17.739
 !MESSAGE Tool usage for 'TCF_APP_DEBUG' updated to '4'
+!SESSION 2025-04-22 10:36:11.764 -----------------------------------------------
+eclipse.buildId=2023.2
+java.version=11.0.16.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2025-04-22 10:36:52.113
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.ui 4 4 2025-04-22 10:36:55.410
+!MESSAGE Plug-in 'org.eclipse.ui.editors' contributed an invalid Menu Extension (Path: 'navigate' is invalid): org.eclipse.ui.edit.text.gotoLastEditPosition
+
+!ENTRY org.eclipse.cdt.core 4 0 2025-04-22 10:36:55.908
+!MESSAGE Failed to open C/C++ index file C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\.metadata\.plugins\org.eclipse.cdt.core\AudioProcessing21.1745242639156.pdom - rebuilding the index
+!STACK 1
+org.eclipse.core.runtime.CoreException: Corrupted database: AudioProcessing21.1745242639156.pdom
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:318)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:298)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getRecPtr(Database.java:513)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMLinkage.getLinkageID(PDOMLinkage.java:123)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.readLinkages(PDOM.java:458)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.loadDatabase(PDOM.java:439)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.<init>(PDOM.java:414)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:64)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:59)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.getOrCreatePDOM(PDOMManager.java:390)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.createIndexer(PDOMManager.java:590)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:58)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2025-04-22 10:36:55.909
+!MESSAGE Corrupted database: AudioProcessing21.1745242639156.pdom
+
+!ENTRY org.eclipse.cdt.core 4 0 2025-04-22 10:36:55.911
+!MESSAGE Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Corrupted database: AudioProcessing21.1745242639156.pdom
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:318)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:298)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getRecPtr(Database.java:513)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMLinkage.getLinkageID(PDOMLinkage.java:123)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.readLinkages(PDOM.java:458)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.loadDatabase(PDOM.java:439)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.<init>(PDOM.java:414)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:64)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:59)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.getOrCreatePDOM(PDOMManager.java:398)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.createIndexer(PDOMManager.java:590)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:58)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2025-04-22 10:36:55.911
+!MESSAGE Corrupted database: AudioProcessing21.1745242639156.pdom
+
+!ENTRY org.eclipse.launchbar.core 2 0 2025-04-22 10:36:58.679
+!MESSAGE Enablement expression is missing for descriptor type org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2025-04-22 10:36:58.681
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2025-04-22 10:36:58.682
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:37:05.974
+!MESSAGE XSCT Command: [set sdk::sdk_chan tcfchan#0], Thread: Thread-68
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:37:05.974
+!MESSAGE XSCT Command: [::hsi::utils::init_repo], Thread: Worker-6: Initializing s/w repositories
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:37:05.979
+!MESSAGE XSCT Command: [plnx-install-path  ; ::scw::scw_mode gui], Thread: Thread-19
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:37:05.983
+!MESSAGE XSCT command with result: [set sdk::sdk_chan tcfchan#0], Result: [null, tcfchan#0]. Thread: Thread-68
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:37:05.984
+!MESSAGE XSCT Command: [setws C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1], Thread: Thread-68
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:37:13.958
+!MESSAGE XSCT command with result: [::hsi::utils::init_repo], Result: [null, ]. Thread: Worker-6: Initializing s/w repositories
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:37:13.959
+!MESSAGE XSCT command with result: [plnx-install-path  ; ::scw::scw_mode gui], Result: [null, ]. Thread: Thread-19
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:37:13.959
+!MESSAGE XSCT Command: [set query_var1 $::env(RDI_DATADIR)], Thread: Worker-6: Initializing s/w repositories
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:37:13.959
+!MESSAGE XSCT command with result: [setws C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1], Result: [null, ]. Thread: Thread-68
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:37:13.961
+!MESSAGE XSCT command with result: [set query_var1 $::env(RDI_DATADIR)], Result: [null, C:/Xilinx/Vitis/2024.1/data]. Thread: Worker-6: Initializing s/w repositories
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:37:16.943
+!MESSAGE XSCT Command: [::hsi::utils::openhw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa], Thread: Worker-2: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:37:20.216
+!MESSAGE XSCT command with result: [::hsi::utils::openhw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa], Result: [null, ]. Thread: Worker-2: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:37:20.222
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/sw/AudioProcessing2/standalone_ps7_cortexa9_0/system.mss ], Thread: Worker-2: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:37:20.227
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/sw/AudioProcessing2/standalone_ps7_cortexa9_0/system.mss ], Result: [null, ]. Thread: Worker-2: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:37:20.227
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/sw/AudioProcessing2/standalone_ps7_cortexa9_0/system.mss], Thread: Worker-2: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:37:20.232
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/sw/AudioProcessing2/standalone_ps7_cortexa9_0/system.mss], Result: [null, {"procname": "ps7_cortexa9_0",
+"osname": "standalone",
+"osver": "9.1",
+}]. Thread: Worker-2: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2025-04-22 10:37:20.234
+!MESSAGE Generating MD5 hash for file: C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\AudioProcessing2\export\AudioProcessing2\sw\AudioProcessing2\standalone_ps7_cortexa9_0\system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:37:20.239
+!MESSAGE XSCT Command: [::hsi::utils::closesw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/sw/AudioProcessing2/standalone_ps7_cortexa9_0/system.mss], Thread: Worker-2: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:37:20.243
+!MESSAGE XSCT command with result: [::hsi::utils::closesw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/sw/AudioProcessing2/standalone_ps7_cortexa9_0/system.mss], Result: [null, ]. Thread: Worker-2: Build Project
+
+!ENTRY com.xilinx.sdx.core 1 0 2025-04-22 10:37:31.255
+!MESSAGE Build step failed, canceling full build chain.
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:38:09.725
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/sw/AudioProcessing2/standalone_ps7_cortexa9_0/system.mss ], Thread: Worker-5: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:38:09.732
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/sw/AudioProcessing2/standalone_ps7_cortexa9_0/system.mss ], Result: [null, ]. Thread: Worker-5: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:38:09.733
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/sw/AudioProcessing2/standalone_ps7_cortexa9_0/system.mss], Thread: Worker-5: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:38:09.746
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/sw/AudioProcessing2/standalone_ps7_cortexa9_0/system.mss], Result: [null, {"procname": "ps7_cortexa9_0",
+"osname": "standalone",
+"osver": "9.1",
+}]. Thread: Worker-5: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2025-04-22 10:38:09.747
+!MESSAGE Generating MD5 hash for file: C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\AudioProcessing2\export\AudioProcessing2\sw\AudioProcessing2\standalone_ps7_cortexa9_0\system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:38:09.748
+!MESSAGE XSCT Command: [::hsi::utils::closesw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/sw/AudioProcessing2/standalone_ps7_cortexa9_0/system.mss], Thread: Worker-5: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:38:09.750
+!MESSAGE XSCT command with result: [::hsi::utils::closesw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/sw/AudioProcessing2/standalone_ps7_cortexa9_0/system.mss], Result: [null, ]. Thread: Worker-5: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:40:07.918
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/sw/AudioProcessing2/standalone_ps7_cortexa9_0/system.mss ], Thread: Worker-0: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:40:07.922
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/sw/AudioProcessing2/standalone_ps7_cortexa9_0/system.mss ], Result: [null, ]. Thread: Worker-0: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:40:07.922
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/sw/AudioProcessing2/standalone_ps7_cortexa9_0/system.mss], Thread: Worker-0: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:40:07.925
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/hw/AudioProcessing2(1).xsa C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/sw/AudioProcessing2/standalone_ps7_cortexa9_0/system.mss], Result: [null, {"procname": "ps7_cortexa9_0",
+"osname": "standalone",
+"osver": "9.1",
+}]. Thread: Worker-0: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2025-04-22 10:40:07.926
+!MESSAGE Generating MD5 hash for file: C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\AudioProcessing2\export\AudioProcessing2\sw\AudioProcessing2\standalone_ps7_cortexa9_0\system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:40:07.927
+!MESSAGE XSCT Command: [::hsi::utils::closesw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/sw/AudioProcessing2/standalone_ps7_cortexa9_0/system.mss], Thread: Worker-0: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:40:07.929
+!MESSAGE XSCT command with result: [::hsi::utils::closesw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/sw/AudioProcessing2/standalone_ps7_cortexa9_0/system.mss], Result: [null, ]. Thread: Worker-0: Build Project

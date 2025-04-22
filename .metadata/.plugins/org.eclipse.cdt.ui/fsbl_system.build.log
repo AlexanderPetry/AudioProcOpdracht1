@@ -1,0 +1,16 @@
+18:24:01 **** Incremental Build of configuration Debug for project fsbl_system ****
+make all 
+Generating bif file for the system project
+generate_system_bif.bat 56590 C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing21/export/AudioProcessing21/AudioProcessing21.xpfm standalone_ps7_cortexa9_0 C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/fsbl_system/Debug/system.bif
+'\gnu\microblaze\lin\bin\' is not recognized as an internal or external command,
+operable program or batch file.
+'\gnu\microblaze\nt\bin\' is not recognized as an internal or external command,
+operable program or batch file.
+'\gnuwin\bin\' is not recognized as an internal or external command,
+operable program or batch file.
+sdcard_gen --xpfm C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing21/export/AudioProcessing21/AudioProcessing21.xpfm --sys_config AudioProcessing21 --bif C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/fsbl_system/Debug/system.bif --bitstream C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/fsbl/_ide/bitstream/AudioProcessing2.bit --elf C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/fsbl/Debug/fsbl.elf,ps7_cortexa9_0
+creating BOOT.BIN using C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/fsbl/_ide/bitstream/AudioProcessing2.bit
+Running C:/Xilinx/Vitis/2024.1/bin/bootgen  -image C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/fsbl_system/Debug/sd_card_temp/boot.bif -w -o i BOOT.BIN
+
+18:24:10 Build Finished (took 9s.270ms)
+

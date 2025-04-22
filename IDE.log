@@ -3537,3 +3537,24 @@ operable program or batch file.
 15:38:17 INFO  : Result from executing command 'getProjects': AudioProcessing2;AudioProcessing21
 15:38:17 INFO  : Result from executing command 'getPlatforms': AudioProcessing21|C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing21/export/AudioProcessing21/AudioProcessing21.xpfm;AudioProcessing2|C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/AudioProcessing2.xpfm
 15:38:31 INFO  : Checking for BSP changes to sync application flags for project 'fsbl'...
+10:36:56 DEBUG : Logs will be stored at 'C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/IDE.log'.
+10:36:57 INFO  : Launching XSCT server: xsct.bat -n  -interactive C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay\Taak1\temp_xsdb_launch_script.tcl
+10:36:58 ERROR : (XSDB Server)'\gnu\microblaze\lin\bin\' is not recognized as an internal or external command,
+operable program or batch file.
+
+10:36:58 ERROR : (XSDB Server)'\gnu\microblaze\nt\bin\' is not recognized as an internal or external command,
+operable program or batch file.
+
+10:36:58 ERROR : (XSDB Server)'\gnuwin\bin\' is not recognized as an internal or external command,
+operable program or batch file.
+
+10:37:04 INFO  : Registering command handlers for Vitis TCF services
+10:37:04 INFO  : Platform repository initialization has completed.
+10:37:05 INFO  : XSCT server has started successfully.
+10:37:05 INFO  : Successfully done setting XSCT server connection channel  
+10:37:13 INFO  : plnx-install-location is set to ''
+10:37:13 INFO  : Successfully done setting workspace for the tool. 
+10:37:13 INFO  : Successfully done query RDI_DATADIR 
+10:37:16 INFO  : Checking for BSP changes to sync application flags for project 'Taak1app'...
+10:38:09 INFO  : Checking for BSP changes to sync application flags for project 'Taak1app'...
+10:40:07 INFO  : Checking for BSP changes to sync application flags for project 'Taak1app'...

@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include "platform.h"
+#include "xil_printf.h"
+#include "arm_math.h"
+#include "arm_const_structs.h"
+#include "audio.h"
+#include "xscutimer.h"
+#include "xscugic.h"
+#include "math.h"
+#include "xuartps.h"
+#include "xgpio.h"
+
+
+typedef struct {
+    volatile float32_t freq1;
+    volatile float32_t freq2;
+    volatile float32_t theta1;
+    volatile float32_t theta2;
+    volatile int active;
+} ToneState;
+
+
+typedef struct {
+    int fftSize;
+    int sampleBlockSize;
+    int sampleRate;
+} FftConfig;
+
+
+typedef struct {
+    float32_t freq1;
+    float32_t freq2;
+} DTMFPair;
+
+
+typedef struct {
+    char key;
+    float low;
+    float high;
+} DTMFEntry;
+
+DTMFEntry dtmfTable[] = {
+    {'1', 697, 1209}, {'2', 697, 1336}, {'3', 697, 1477}, {'A', 697, 1633},
+    {'4', 770, 1209}, {'5', 770, 1336}, {'6', 770, 1477}, {'B', 770, 1633},
+    {'7', 852, 1209}, {'8', 852, 1336}, {'9', 852, 1477}, {'C', 852, 1633},
+    {'*', 941, 1209}, {'0', 941, 1336}, {'#', 941, 1477}, {'D', 941, 1633}
+};
+
+
+static void Timer_ISR(void * CallBackRef, int sampleRate, ToneState state, uint32_t uintScaledMax);
+static int Timer_Intr_Setup(XScuGic * IntcInstancePtr, XScuTimer *TimerInstancePtr, u16 TimerIntrId, u32 deviceID);
+void DisplayDTMFOnLED(char key, XGpio led);
+DTMFPair GetDTMFFrequencies(char key);
+char matchDTMF(float f1, float f2, float *errorOut);
+char DetectDTMFFrequency(FftConfig config);
+void PlayDTMF(ToneState state,float32_t f1, float32_t f2, float duration_sec);
+void receivingLoop();
+void sendingLoop(XUartPs Uart_Ps,XGpio GpioLed, ToneState state);
+void init_serial(XUartPs Uart_Ps);
+int  init_input_hardware(XGpio GpioLed, XGpio GpioSwitches, int switchValue);
+void init_audio_configuration();
+void init_timer(int sampleRate,u16 timerIntrId,u32 deviceID);
+void update_switch(XGpio GpioSwitches);

@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include "platform.h"
+#include "xil_printf.h"
+#include "arm_math.h"
+#include "arm_const_structs.h"
+#include "audio.h"
+#include "xscutimer.h"
+#include "xscugic.h"
+#include "math.h"
+#include "xuartps.h"
+#include "xgpio.h"
+
+
+static void Timer_ISR(void * CallBackRef, int sampleRate, ToneState state, uint32_t uintScaledMax);
+
+
+static int Timer_Intr_Setup(XScuGic * IntcInstancePtr, XScuTimer *TimerInstancePtr, u16 TimerIntrId);
+
+
+void DisplayDTMFOnLED(char key);
+
+
+typedef struct {
+    int fftSize;
+    int sampleBlockSize;
+    int sampleRate;
+} FftConfig;
+
+
+typedef struct {
+    float32_t freq1;
+    float32_t freq2;
+} DTMFPair;
+
+DTMFPair GetDTMFFrequencies(char key) {
+
+
+typedef struct {
+    char key;
+    float low;
+    float high;
+} DTMFEntry;
+
+DTMFEntry dtmfTable[] = {
+    {'1', 697, 1209}, {'2', 697, 1336}, {'3', 697, 1477}, {'A', 697, 1633},
+    {'4', 770, 1209}, {'5', 770, 1336}, {'6', 770, 1477}, {'B', 770, 1633},
+    {'7', 852, 1209}, {'8', 852, 1336}, {'9', 852, 1477}, {'C', 852, 1633},
+    {'*', 941, 1209}, {'0', 941, 1336}, {'#', 941, 1477}, {'D', 941, 1633}
+};
+
+char matchDTMF(float f1, float f2, float *errorOut);
+
+
+arm_status DetectDTMFFrequency();
+
+
+void PlayDTMF(float32_t f1, float32_t f2, float duration_sec);
+
+
+void receivingLoop();
+
+void sendingLoop();
+
+void init_serial();
+
+
+void init_input_hardware();
+
+
+void init_audio_configuration();
+
+
+void init_timer();
+
+void update_switch();

@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include "platform.h"
+#include "xil_printf.h"
+#include "arm_math.h"
+#include "arm_const_structs.h"
+#include "audio.h"
+#include "xscutimer.h"
+#include "xscugic.h"
+#include "math.h"
+#include "xuartps.h"
+#include "xgpio.h"
+
+XGpio GpioLed;
+XGpio GpioSwitches;
+
+int switchValue;
+bool isReceiveMode;
+
+#define UINT32_MAX_AS_FLOAT 4294967295.0f //(2^32 - 1
+#define UINT_SCALED_MAX_VALUE 0xFFFFF // 2^24 =>24 bits audio codec maximum value is 0xFF FFFF
+
+#define TIMER_DEVICE_ID		XPAR_XSCUTIMER_0_DEVICE_ID
+#define INTC_DEVICE_ID		XPAR_SCUGIC_SINGLE_DEVICE_ID
+#define TIMER_IRPT_INTR		XPAR_SCUTIMER_INTR
+
+
+#define LED_CHANNEL 1
+#define LED_DELAY   1000000
+
+#define FFT_SIZE 1024
+#define SAMPLE_BLOCK_SIZE (FFT_SIZE * 2)
+#define SAMPLE_RATE 48000
+
+float32_t sampleBuffer[SAMPLE_BLOCK_SIZE];
+
+volatile unsigned long u32DataL, u32DataR;
+
+volatile float32_t tone_freq1 = 0.0f, tone_freq2 = 0.0f;
+volatile float32_t theta1 = 0.0f, theta2 = 0.0f;
+volatile int tone_active = 0;
+
+XUartPs Uart_Ps;
+
+
+
+
+
+int main()
+{
+	  int Status;
+
+	  init_platform();
+	  init_serial();
+	  init_input_hardware();
+	  init_audio_configuration();
+	  init_timer();
+
+
+
+	  for(;;) {
+		  update_switch();
+
+		  if(isReceiveMode)
+		  {
+			  receivingLoop();
+		  }
+		  else
+		  {
+			  sendingLoop();
+		  }
+	  }
+
+	  cleanup_platform();
+	  return 0;
+}
