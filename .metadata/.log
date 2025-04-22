@@ -230,3 +230,9 @@ org.eclipse.core.runtime.CoreException: Corrupted database: AudioProcessing21.17
 
 !ENTRY com.xilinx.sdk.utils 0 0 2025-04-22 10:40:07.929
 !MESSAGE XSCT command with result: [::hsi::utils::closesw C:/Users/PatrickKenis/AudioProccesing/LAB2_Delay/Taak1/AudioProcessing2/export/AudioProcessing2/sw/AudioProcessing2/standalone_ps7_cortexa9_0/system.mss], Result: [null, ]. Thread: Worker-0: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2025-04-22 11:00:17.157
+!MESSAGE Opening file dialog using preferences. Current path: C:\Users\PatrickKenis\AudioProccesing\LAB2_Delay, Local preference: sdx_export_archive_directory, Group preference: null
+
+!ENTRY com.xilinx.sdk.utils 1 0 2025-04-22 11:01:16.991
+!MESSAGE Tool usage for 'SDX_EXPORT' updated to '1'
