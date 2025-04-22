@@ -17,26 +17,21 @@ GPIO-based mode switching (hardware switch).
 LED display to visualize detected keys in binary.
 
 ## Hardware Requirements
-Pynq-Z2 board
-
-Audio codec interface (I2S)
-
-GPIO for LED and switch
-
-USB-UART connection
+- Pynq-Z2 board
+- Audio codec interface (I2S)
+- GPIO for LED and switch
+- USB-UART connection
 
 ## Dependencies
-Xilinx SDK BSP (GPIO, UART, Timer, Interrupt, I2S)
-
-ARM CMSIS-DSP library for FFT
-
-Audio configuration utilities (audio.h)
+- Xilinx SDK BSP (GPIO, UART, Timer, Interrupt, I2S)
+- [ARM CMSIS-DSP](Taak1app/src/Source) library for FFT
+- Audio configuration utilities ([audio.h](Taak1app/src/audio.h))
 
 ## Usage
 You can run the system in two ways:
 
 ### Option 1: Boot from SD Card
-Copy boot.bin to the root of a FAT32-formatted SD card.
+Copy [boot.bin](boot/BOOT.bin) to the root of a FAT32-formatted SD card.
 
 Insert the SD card into the Zynq board and power it on.
 
@@ -61,21 +56,21 @@ In Receive Mode: Input DTMF tones via mic; detected keys display on LEDs.
 Monitor UART for feedback on mode, frequencies, and key detection.
 
 ## File Overview
-*main()* – Initializes platform, UART, audio, GPIOs, timer, and mode loop
+**main()** – Initializes platform, UART, audio, GPIOs, timer, and mode loop
 
-*Timer_ISR()* – Outputs audio samples during tone generation
+**Timer_ISR()** – Outputs audio samples during tone generation
 
-*PlayDTMF()* – Generates dual-tone signal for a key
+**PlayDTMF()** – Generates dual-tone signal for a key
 
-*DetectDTMFFrequency()* – Reads samples and detects DTMF key using FFT
+**DetectDTMFFrequency()** – Reads samples and detects DTMF key using FFT
 
-*DisplayDTMFOnLED()* – Displays detected key on LED
+**DisplayDTMFOnLED()** – Displays detected key on LED
 
-*GetDTMFFrequencies()* – Maps key to tone frequencies
+**GetDTMFFrequencies()** – Maps key to tone frequencies
 
-*matchDTMF()* – Matches detected frequencies to a known key
+**matchDTMF()** – Matches detected frequencies to a known key
 
-*sendingLoop() / receivingLoop()* – Mode-specific handlers
+**sendingLoop() / receivingLoop()** – Mode-specific handlers
 
 ## Notes
 Frequencies are clamped to avoid audio overflow.
