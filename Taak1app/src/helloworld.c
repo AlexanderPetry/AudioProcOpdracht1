@@ -346,11 +346,13 @@ int main()
 	  XScuTimer_EnableAutoReload(&Scu_Timer);
 	  XScuTimer_Start(&Scu_Timer);
 
-	  for(;;) {
+	  for(;;)
+	  {
 		  static int prevSwitchValue = -1;
 
 		  switchValue = XGpio_DiscreteRead(&GpioSwitches, 2);
-		  if (switchValue != prevSwitchValue) {
+		  if (switchValue != prevSwitchValue)
+		  {
 		  	isReceiveMode = (switchValue & 0x1) != 0;
 		  	xil_printf("Mode: %s\r\n", isReceiveMode ? "Receiving" : "Sending");
 		  	prevSwitchValue = switchValue;
@@ -364,10 +366,6 @@ int main()
 		  {
 			  sendingLoop();
 		  }
-
-
-
-
 	  }
 
 	  cleanup_platform();

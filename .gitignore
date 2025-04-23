@@ -127,6 +127,8 @@ dkms.conf
 !*.bmm
 !*.xmp
 
+!*.zip
+
 ### Xilinx ###
 # gitignore template for Xilinx Vivado Design Suite
 # website: https://www.xilinx.com/support/download.html
@@ -136,7 +138,6 @@ dkms.conf
 *.log
 *.debug
 *.str
-*.zip
 *.tmp
 *.rst
 *.os
